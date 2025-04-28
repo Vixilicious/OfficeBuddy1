@@ -1,0 +1,96 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 215 79% 35%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 217 92% 60%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 5%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-tech;
+  }
+}
+
+@layer components {
+  .btn-gradient {
+    @apply relative overflow-hidden bg-gradient-blue text-white px-6 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-gradient::before {
+    content: "";
+    @apply absolute inset-0 bg-black bg-opacity-0 transition-all duration-300;
+  }
+  
+  .btn-gradient:hover::before {
+    @apply bg-opacity-10;
+  }
+
+  .tech-card {
+    @apply rounded-xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-blue inline-block text-transparent bg-clip-text;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .container-tight {
+    @apply container max-w-5xl mx-auto px-4;
+  }
+}
+
+/* Particle canvas styling */
+canvas.particles-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.6;
+}
