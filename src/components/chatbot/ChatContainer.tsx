@@ -25,7 +25,10 @@ const ChatContainer: React.FC = () => {
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      messagesEndRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
     }
   };
 
@@ -71,14 +74,14 @@ const ChatContainer: React.FC = () => {
   };
 
   return (
-    <div className='flex flex-col h-[calc(100vh-4rem)] max-w-4xl mx-auto shadow-lg border border-gray-200 rounded-lg overflow-hidden bg-white'>
+    <div className='flex flex-col h-[500px] max-w-3xl mx-auto shadow-lg border border-gray-200 rounded-lg overflow-hidden bg-white'>
       <ChatHeader />
 
-      <div className='flex-1 overflow-y-auto p-4 bg-gray-50'>
+      <div className='flex-1 overflow-y-auto p-4 bg-gray-50 scroll-smooth'>
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} />
         ))}
-        <div ref={messagesEndRef} />
+        <div ref={messagesEndRef} className='h-0' />
       </div>
 
       <ChatSuggestions
